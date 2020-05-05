@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Theatre Tickets</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+      </head>
+    <body>
+        <form name="myform">
+            <div class="container">
+                    <div class="col-md-4">
+                        <h2>Welcome to Our Theatre Tickets Booking System</h2>
+                    </div>
+               </div>
+            
+             <div class="row" style="width: fit-content;">
+            <div class=col-md-4 style="width: 600px; padding: 35px; float: left;border-radius: 10px;">
+                <input type="text" id="name" name="name" placeholder="Enter Your Name" autofocus><br>
+                <input type="text" id="address" name="address" placeholder="Enter Your Address" required><br>
+                <b>Currently Available Shows</b><br>
+                <input type="radio" id="show1" name="show" style="padding-inline: 20px;" value="Phantom of the Opera">
+                <label for="show1">Phantom of the Opera</label><br>
+                <input type="radio" id="show2" name="show" value="Hamilton">
+                <label for="show2">Hamilton</label><br>
+                <input type="radio" id="show3" name="show" value="Lion King">
+                <label for="show3">Lion King</label><br>
+                <input type="radio" id="show4" name="show" value="Miss Saigon">
+                <label for="show4">Miss Saigon</label><br>
+                <input type="text" id="no" name="ticket" placeholder="Enter Number of seats" required><br>
+                
+                <label for="Delivery">Choose a delivery method:</label>
+                <select name="Delivery" id="delivery">
+                  <option id ="d1" value="E-Ticket">E-Ticket</option>
+                  <option id="d2" value="Box-Office">Box-Office</option>
+                  <option id="d3" value="Posted">Posted</option>
+                </select>
+                <br>
+    
+                <button type="button" onclick="bill()">Book</button> 
+                <button type="button" onclick="price()">Get Price</button><br>
+                <button type="button" onclick="show_charges()">ShowCharges</button>
+                <button type="button" onclick="reset()">Book Another</button>
+            </div>
+            <div class="col" id="col" style="background-color: cornflowerblue;">
+                <h3 style="text-align: center;">Your Order Summary</h3>
+                <p style="text-align: center;">Details Regarding Order You can see here</p>
+                <hr>
+                <br>
+                <p style="opacity: inherit;" id="details"></p>
+                <ol style="list-style: none;">
+                    <li id="l7"></li>
+                    <li id="l1"></li>
+                    <li id="l2"></li>
+                    <li id="l3"></li>
+                    <li id="l4"></li>
+                    </ol>
+            </div>
+            <div class="col" id="col2" style="background-color: rgb(100, 237, 214);">
+                <h3 style="text-align: center;">Shows Price Chart</h3>
+                <hr>
+                <ol>
+                    <li id=sl1></li>
+                    <li id="sl2"></li>
+                    <li id="sl3"></li>
+                    <li id="sl4"></li>
+                    
+                  </ol>        
+            </div>
+            <div class="col" id="col3" style="background-color: lightgreen;">
+                <h3 style="text-align: center;">Delivery Charges</h3>
+                <hr>
+                <ol>
+                    <li id=sl21></li>
+                    <li id="sl22"></li>
+                    <li id="sl23"></li>
+                    
+                  </ol>
+            </div>
+            </div>
+            <div class="footer">
+                <p>Contact</p>
+                <p>Name: demanoi jospin yah</p>
+                <p>Email: Y017059J@student.staffs.ac.uk</p>
+              </div>
+           
+        </form>
+        
+    </body>
+    <script>
+        function bill(){
+          var discount;
+
+          var num,n,name,method;
+          var total, rate,charge;
+          
+          name=document.getElementById("name").value;
+          num=document.getElementById("no").value;
+          if(name=='' || num==''){
+              alert("Error Occured..\nPlease Fill the details..!!!")
+
+          }
+          else{
+
+          
+          if (num>=10) {
+              rate="15%";
+              if(document.getElementById('show1').checked){
+                  total=85*num;
+                  discount=total*0.15;
+                  document.getElementById('l7').innerHTML="Ticket Successfully Booked for: "+ document.getElementById('show1').value;
+
+              }
+              else if(document.getElementById('show2').checked){
+                  total=79*num;
+                  discount=total*0.15;
+                  document.getElementById('l7').innerHTML="Ticket Successfully Booked for: "+ document.getElementById('show2').value;
+              }
+              else if(document.getElementById('show3').checked){
+                  total=67*num;
+                  discount=total*0.15;
+                  document.getElementById('l7').innerHTML="Ticket Successfully Booked for: "+ document.getElementById('show3').value;
+              }
+              else if(document.getElementById('show4').checked){
+                  total=83*num;
+                  discount=total*0.15;
+                  document.getElementById('l7').innerHTML="Ticket Successfully Booked for: "+ document.getElementById('show4').value;
+              }
+              else{
+                  alert("Please Select show from the list..!!");
+                  document.getElementById("myform").reset(); 
+                 
+
+              }
+           
+          }
+          else if(num>=6){
+              rate="10%";
+              if(document.getElementById('show1').checked){
+                  total=85*num;
+                  discount=total*0.1;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show1').value;
+
+
+              }
+              else if(document.getElementById('show2').checked){
+                  total=79*num;
+                  discount=total*0.1;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show2').value;
+              }
+              else if(document.getElementById('show3').checked){
+                  total=67*num;
+                  discount=total*0.1;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show3').value;
+              }
+              else if(document.getElementById('show4').checked){
+                  total=83*num;
+                  discount=total*0.1;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show4').value;
+              }
+              else{
+                  alert("Please Select show from the list..!!")
+                  document.getElementById("myform").reset(); 
+                  
+              }
+
+            
+          }
+          else{
+            rate="No ";
+              if(document.getElementById('show1').checked){
+                  total=85*num;
+                  discount=0;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show1').value;
+
+
+              }
+              else if(document.getElementById('show2').checked){
+                  total=79*num;
+                  discount=0;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show2').value;
+              }
+              else if(document.getElementById('show3').checked){
+                  total=67*num;
+                  discount=0;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show3').value;
+              }
+              else if(document.getElementById('show4').checked){
+                  total=83*num;
+                  discount=0;
+                  document.getElementById('l7').innerHTML=num+" tickets for "+ document.getElementById('show4').value;
+              }
+              else{
+                  alert("Please Select show from the list..!!")
+                  document.getElementById("myform").reset(); 
+              }
+          }
+          
+              if(document.getElementById('delivery').value=="E-Ticket"){
+                method=document.getElementById('delivery').value;
+                  charge=0;
+              }
+              else if(document.getElementById('delivery').value=="Box-Office"){
+                method=document.getElementById('delivery').value;
+                charge=1.50;
+              }
+              else if(document.getElementById('delivery').value=="Posted"){
+                method=document.getElementById('delivery').value;
+                charge=3.99;
+              }
+            
+          
+            
+         document.getElementById('l1').innerHTML= "Total Cost:  £"+total;
+         document.getElementById('l2').innerHTML= rate+" discount:  £"+discount;
+         document.getElementById('l3').innerHTML="Collect from  "+method+":  £"+charge;
+         document.getElementById('l4').innerHTML="Final Cost:  £"+((total+charge)-discount);
+        
+        document.getElementById('col').style.visibility="visible";
+        document.getElementById('col2').style.visibility="hidden"
+        document.getElementById('col3').style.visibility="hidden"
+
+        }
+    }
+        function price(){
+            document.getElementById('sl1').innerHTML= document.getElementById('show1').value+" :     £79" ;
+            document.getElementById('sl2').innerHTML= document.getElementById('show2').value+" :    £85" ;
+            document.getElementById('sl3').innerHTML= document.getElementById('show3').value+" :   £67" ;
+            document.getElementById('sl4').innerHTML= document.getElementById('show4').value+" :  £83" ;
+            document.getElementById('col2').style.visibility="visible";
+
+
+          }
+          function show_charges(){
+            document.getElementById('sl21').innerHTML= document.getElementById('d1').value+" :    Free";
+            document.getElementById('sl22').innerHTML= document.getElementById('d2').value+" :    £1.50";
+            document.getElementById('sl23').innerHTML= document.getElementById('d3').value+" :    £3.99";
+            document.getElementById('col3').style.visibility="visible";
+          }
+          function reset(){
+            document.getElementById("myform").reset(); 
+            
+          }
+        </script>
+        
+</html>
